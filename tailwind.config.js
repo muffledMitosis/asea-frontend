@@ -11,6 +11,12 @@ module.exports = {
         "t-dark-gray": "#969191",
         "t-blue": "#001EB9",
         "t-black": "#162427",
+      },
+      fontFamily: {
+        'satoshi': ['Satoshi', 'sans-serif']
+      },
+      letterSpacing: {
+        "sub-header": "0.25rem"
       }
     },
   },
