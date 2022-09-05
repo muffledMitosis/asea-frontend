@@ -1,10 +1,15 @@
+import { Router, Routes, Route, Link, BrowserRouter} from 'react-router-dom';
 import Main from './Pages/Main.js'
+import NewProduct from './Pages/NewProduct.js';
 
 function App() {
   return (
-    <div className="App font-satoshi">
-      <Main />
-    </div>
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Main />} />
+      <Route path='/new-product' element={<NewProduct />} />
+    </Routes>
+  </BrowserRouter>
   );
 }
 
