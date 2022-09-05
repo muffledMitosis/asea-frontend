@@ -1,6 +1,6 @@
 import SearchBar from "./Minor/SearchBar";
-import StarIcon from '../assets/star.svg'
-import StarredIcon from '../assets/starred.svg'
+import StarIcon from '../assets/icons/star.svg'
+import StarredIcon from '../assets/icons/starred.svg'
 
 function SubHeader(props){
 	return (

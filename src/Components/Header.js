@@ -8,7 +8,7 @@ function Header(){
 				<div className="font-bold">
 				</div>
 			</div>
-			<div>IMG</div>
+			{/* <div>IMG</div> */}
 		</div>
 	);
 }
