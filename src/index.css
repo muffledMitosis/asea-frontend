@@ -1,3 +1,11 @@
 @tailwind base;
+body {
+	background-color: #FFFFFF;
+}
 @tailwind components;
+
+.debug {
+	@apply border border-red-500;
+}
+
 @tailwind utilities;

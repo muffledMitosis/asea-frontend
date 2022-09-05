@@ -1,7 +1,9 @@
+import Main from './Pages/Main.js'
+
 function App() {
   return (
-    <div className="App font-bold underline">
-      Test
+    <div className="App font-satoshi">
+      <Main />
     </div>
   );
 }
