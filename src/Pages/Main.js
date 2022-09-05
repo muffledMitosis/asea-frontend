@@ -3,12 +3,27 @@ import ProductList from "../Components/ProductList";
 import ProductListItem from "../Components/Minor/ProductListItem";
 import SubHeader from "../Components/SubHeader";
 
+import Product1 from "../assets/images/product-img-1.png";
+
 function Main(){
 	
 	let items = [
-		<ProductListItem sku="lks" />,
-		<ProductListItem product_name="lmao" />,
-		<ProductListItem />,
+		<ProductListItem sku="#CA25"
+										 img={Product1}
+										 product_name="Product-name"
+										 price="$24.00"/>,
+		<ProductListItem sku="#CA25"
+										 img={Product1}
+										 product_name="Product-name"
+										 price="$24.00"/>,
+		<ProductListItem sku="#CA25"
+										 img={Product1}
+										 product_name="Product-name"
+										 price="$24.00"/>,
+		<ProductListItem sku="#CA25"
+										 img={Product1}
+										 product_name="Product-name"
+										 price="$24.00"/>,
 	]
 	
 
