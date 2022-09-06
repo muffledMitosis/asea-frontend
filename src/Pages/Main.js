@@ -2,6 +2,7 @@ import Header from "../Components/Header";
 import ProductList from "../Components/ProductList";
 import ProductListItem from "../Components/Minor/ProductListItem";
 import SubHeader from "../Components/SubHeader";
+import * as Util from "../Util/Util";
 
 import Product1 from "../assets/images/product-img-1.png";
 import { useEffect, useState } from "react";
@@ -36,13 +37,7 @@ function Main(){
 				 .then(resp=>{
 						let allData = [];
 						resp.data.forEach(item => {
-							allData.push(<ProductListItem 
-																						sku={item["SKU"]}
-																						img={""}
-																						product_name={item["Name"]}
-																						price={item["QTY"]}
-																						key={item["SKU"]}
-																						/>);
+							allData.push(Util.createListItem(item));
 						});
 						setItems(allData);
 				 })
