@@ -6,13 +6,34 @@ import BasicSpinner from "../Components/Minor/BasicSpinner";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
+import ProductDataHeader from "../Components/Minor/ProductData/ProductDataHeader";
+import { useSearchParams } from "react-router-dom";
 
 
-function NewProduct(){
+function NewProduct(props){
+
+	const [editTransfer, setEditTransfer] = useState(false);
+
+	const [searchParams, setSearchParams] = useSearchParams();
+	const action = searchParams.get('action');
+	const editID = searchParams.get('editID');
+
+	const [productData, setProductData] = useState(null);
+
+	console.log(editID);
+
+	if(editID && action=="edit" && productData == null){
+		setEditTransfer(true);
+		axios.get('http://localhost:8080/get-from-sku/' + editID)
+				 .then(resp => {
+					console.log(resp.data)
+				 });
+		setProductData("got");
+	}
 
 	const sendPOST = data =>{
 		axios.post('http://localhost:8080/add-product', data)
-				 .then(event => window.location="/");
+				 .then(resp => window.location="/");
 	};
 
 	const [posting, setPosting] = useState(false);
@@ -21,25 +42,12 @@ function NewProduct(){
   const onSubmit = (data, e) => {setPosting(true); sendPOST(data);};
   const onError = (errors, e) => console.log(errors, e);
 
-	return (
-		<div className="">
-			<Header />
-
-			{/* <div className="font-satoshi my-10 mx-4 flex items-center">
-				<div className=" font-bold text-3xl tracking-sub-header">PRODUCTS</div>
-				<img className="mx-2" src={ArrowIcon} />
-				<div className="font-bold text-t-blue text-lg">Add new product</div>
-			</div> */}
-
+	let formElem = (
 			<form className=" text-t-black flex w-full justify-center"
 						onSubmit={handleSubmit(onSubmit, onError)}>
 				<div className="max-w-3xl font-satoshi">
 
-				<div className="font-satoshi my-10 flex items-center">
-					<div className=" font-bold text-3xl tracking-sub-header">PRODUCTS</div>
-					<img className="mx-2" src={ArrowIcon} />
-					<div className="font-bold text-t-blue text-lg">Add new product</div>
-				</div>
+					<ProductDataHeader text={action == "add" ? "Add new product" : "Edit product"} />
 
 					<div className="flex font-satoshi items-center">
 						<div className="w-16">SKU</div>
@@ -79,6 +87,13 @@ function NewProduct(){
 				</div>
 
 			</form>
+
+	);
+
+	return (
+		<div className="">
+			<Header />
+			{editTransfer ? <BasicSpinner /> : formElem}
 		</div>
 	);
 }
