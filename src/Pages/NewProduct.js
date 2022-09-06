@@ -1,8 +1,21 @@
 import Header from "../Components/Header";
 import ArrowIcon from "../assets/icons/arrow.svg";
-import BasicButton from "../Components/Minor/BasicButton";
+import BasicSubmit from "../Components/Minor/BasicSubmit";
+
+import { useForm } from "react-hook-form";
+import axios from "axios";
+
 
 function NewProduct(){
+
+	const sendPOST = data =>{
+		axios.post('http://localhost:8080/add-product', data);
+	};
+
+	const { register, handleSubmit } = useForm();
+  const onSubmit = (data, e) => sendPOST(data);
+  const onError = (errors, e) => console.log(errors, e);
+
 	return (
 		<div className="">
 			<Header />
@@ -13,7 +26,8 @@ function NewProduct(){
 				<div className="font-bold text-t-blue text-lg">Add new product</div>
 			</div> */}
 
-			<form className=" text-t-black flex w-full justify-center">
+			<form className=" text-t-black flex w-full justify-center"
+						onSubmit={handleSubmit(onSubmit, onError)}>
 				<div className="max-w-3xl font-satoshi">
 
 				<div className="font-satoshi my-10 flex items-center">
@@ -24,22 +38,26 @@ function NewProduct(){
 
 					<div className="flex font-satoshi items-center">
 						<div className="w-16">SKU</div>
-						<input className="w-64 h-8 bg-t-light-gray" type="text" />
+						<input className="w-64 h-8 bg-t-light-gray" type="text" 
+									 {...register("SKU")}/>
 					</div>
 					<div className="flex font-satoshi items-center mt-8 justify-between">
 						<div className="flex items-center">
 							<div className="w-16">Name</div>
-							<input className="w-64 h-8 bg-t-light-gray" type="text" />
+							<input className="w-64 h-8 bg-t-light-gray" type="text" 
+										 {...register("Name")}/>
 						</div>
 						<div className="flex items-center">
 							<div className="w-16 ml-24">QTY</div>
-							<input className="w-64 h-8 bg-t-light-gray" type="text" />
+							<input className="w-64 h-8 bg-t-light-gray" type="text" 
+										 {...register("QTY")}/>
 						</div>
 					</div>
 
 					<div className="mt-8">Product Description</div>
 					<div className="text-xs text-t-dark-gray mt-2">A small description about the product</div>
-					<input className="w-full h-32 mt-2 bg-t-light-gray" type="text" />
+					<textarea className="w-full h-32 mt-2 bg-t-light-gray" type="text"
+										 {...register("DES")}/>
 
 					<div className="flex mt-8">
 						<div className="flex flex-col text-xs text-t-dark-gray">
@@ -51,7 +69,7 @@ function NewProduct(){
 					</div>
 
 					<div className="flex w-full justify-end mt-8">
-						<BasicButton text="Add product"/>
+						<BasicSubmit value="Add product" />
 					</div>
 				</div>
 
