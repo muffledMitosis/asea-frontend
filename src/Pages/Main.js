@@ -26,14 +26,13 @@ function Main(){
 										 price="$24.00"/>,
 	]
 	
-
-	let elem = <div>
-		<Header />
-		<SubHeader heading="PRODUCTS"/>
-		<ProductList items={items} />
-	</div>
-
-	return elem;
+	return (
+		<div>
+			<Header />
+			<SubHeader heading="PRODUCTS"/>
+			<ProductList items={items} />
+		</div>
+	);
 }
 
 export default Main;
