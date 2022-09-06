@@ -7,6 +7,7 @@ import * as Util from "../Util/Util";
 import Product1 from "../assets/images/product-img-1.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import BasicSpinner from "../Components/Minor/BasicSpinner";
 
 function Main(){
 	
@@ -29,17 +30,17 @@ function Main(){
 	// 									 price="$24.00"/>,
 	// ]
 
-	const [items, setItems] = useState([]);
+	const [items, setItems] = useState("loading");
 	
 	useEffect(()=>{
 		console.log("running use effect");
 		axios.get('http://localhost:8080/products')
 				 .then(resp=>{
-						let allData = [];
-						resp.data.forEach(item => {
-							allData.push(Util.createListItem(item));
-						});
-						setItems(allData);
+								let allData = [];
+								resp.data.forEach(item => {
+									allData.push(Util.createListItem(item));
+								});
+								setItems(allData);
 				 })
 				 .catch(e=>console.log(e));
 	}, []);
@@ -48,7 +49,7 @@ function Main(){
 		<div>
 			<Header />
 			<SubHeader heading="PRODUCTS"/>
-			<ProductList items={items} />
+			{items == "loading" ? <div className="flex w-full justify-center mt-32"><BasicSpinner /></div> : <ProductList items={items} />}
 		</div>
 	);
 }

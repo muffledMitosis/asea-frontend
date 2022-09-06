@@ -10,10 +10,10 @@ function SubHeader(props){
 			<div className="flex flex-row justify-between mt-4">
 				<SearchBar />
 				<div className="flex">
-					<button className="bg-t-blue text-t-white font-bold mx-2 px-10 py-2 rounded-md">
+					<button onClick={() => window.location="/new-product"} className="bg-t-blue text-t-white font-bold mx-2 px-10 py-2 rounded-md">
 						New Product
 					</button>
-					<button className="border border-t-blue rounded-md px-4">
+					<button className="border border-t-blue rounded-md px-4" >
 					<img src={StarredIcon} />
 					</button>
 				</div>

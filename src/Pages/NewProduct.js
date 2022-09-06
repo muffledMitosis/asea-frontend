@@ -1,19 +1,24 @@
 import Header from "../Components/Header";
 import ArrowIcon from "../assets/icons/arrow.svg";
 import BasicSubmit from "../Components/Minor/BasicSubmit";
+import BasicSpinner from "../Components/Minor/BasicSpinner";
 
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useState } from "react";
 
 
 function NewProduct(){
 
 	const sendPOST = data =>{
-		axios.post('http://localhost:8080/add-product', data);
+		axios.post('http://localhost:8080/add-product', data)
+				 .then(event => window.location="/");
 	};
 
+	const [posting, setPosting] = useState(false);
+
 	const { register, handleSubmit } = useForm();
-  const onSubmit = (data, e) => sendPOST(data);
+  const onSubmit = (data, e) => {setPosting(true); sendPOST(data);};
   const onError = (errors, e) => console.log(errors, e);
 
 	return (
@@ -69,7 +74,7 @@ function NewProduct(){
 					</div>
 
 					<div className="flex w-full justify-end mt-8">
-						<BasicSubmit value="Add product" />
+						{posting ? <BasicSpinner /> : <BasicSubmit value="Add product" />}
 					</div>
 				</div>
 
