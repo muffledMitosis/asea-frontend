@@ -11,24 +11,24 @@ import BasicSpinner from "../Components/Minor/BasicSpinner";
 
 function Main(){
 	
-	// let items = [
-	// 	<ProductListItem sku="#CA25"
-	// 									 img={Product1}
-	// 									 product_name="Product-name"
-	// 									 price="$24.00"/>,
-	// 	<ProductListItem sku="#CA25"
-	// 									 img={Product1}
-	// 									 product_name="Product-name"
-	// 									 price="$24.00"/>,
-	// 	<ProductListItem sku="#CA25"
-	// 									 img={Product1}
-	// 									 product_name="Product-name"
-	// 									 price="$24.00"/>,
-	// 	<ProductListItem sku="#CA25"
-	// 									 img={Product1}
-	// 									 product_name="Product-name"
-	// 									 price="$24.00"/>,
-	// ]
+	let mockItems = [
+		<ProductListItem sku="#CA25"
+										 img={Product1}
+										 product_name="Product-name"
+										 price="$24.00"/>,
+		<ProductListItem sku="#CA25"
+										 img={Product1}
+										 product_name="Product-name"
+										 price="$24.00"/>,
+		<ProductListItem sku="#CA25"
+										 img={Product1}
+										 product_name="Product-name"
+										 price="$24.00"/>,
+		<ProductListItem sku="#CA25"
+										 img={Product1}
+										 product_name="Product-name"
+										 price="$24.00"/>,
+	]
 
 	const [items, setItems] = useState("loading");
 	
@@ -40,7 +40,7 @@ function Main(){
 								resp.data.forEach(item => {
 									allData.push(Util.createListItem(item));
 								});
-								setItems(allData);
+								setItems(allData.concat(mockItems));
 				 })
 				 .catch(e=>console.log(e));
 	}, []);
