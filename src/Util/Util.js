@@ -4,6 +4,6 @@ export const createListItem = rawData => {
 	return <ProductListItem sku={rawData["SKU"]}
 													img={""}
 													product_name={rawData["Name"]}
-													price={rawData["QTY"]}
+													price={ "$" + rawData["QTY"] + ".00"}
 													key={rawData["SKU"]} />
 };

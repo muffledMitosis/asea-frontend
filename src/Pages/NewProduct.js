@@ -43,25 +43,25 @@ function NewProduct(){
 
 					<div className="flex font-satoshi items-center">
 						<div className="w-16">SKU</div>
-						<input className="w-64 h-8 bg-t-light-gray" type="text" 
+						<input className="w-64 h-8 bg-t-light-gray" type="text" required={true}
 									 {...register("SKU")}/>
 					</div>
 					<div className="flex font-satoshi items-center mt-8 justify-between">
 						<div className="flex items-center">
 							<div className="w-16">Name</div>
-							<input className="w-64 h-8 bg-t-light-gray" type="text" 
+							<input className="w-64 h-8 bg-t-light-gray" type="text" required={true}
 										 {...register("Name")}/>
 						</div>
 						<div className="flex items-center">
 							<div className="w-16 ml-24">QTY</div>
-							<input className="w-64 h-8 bg-t-light-gray" type="text" 
+							<input className="w-64 h-8 bg-t-light-gray" type="number" required={true}
 										 {...register("QTY")}/>
 						</div>
 					</div>
 
 					<div className="mt-8">Product Description</div>
 					<div className="text-xs text-t-dark-gray mt-2">A small description about the product</div>
-					<textarea className="w-full h-32 mt-2 bg-t-light-gray" type="text"
+					<textarea className="w-full h-32 mt-2 bg-t-light-gray" type="text" required={true}
 										 {...register("DES")}/>
 
 					<div className="flex mt-8">
