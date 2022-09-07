@@ -43,25 +43,25 @@ function NewProduct(){
 
 					<div className="flex font-satoshi items-center">
 						<div className="w-16">SKU</div>
-						<input className="w-64 h-8 bg-t-light-gray" type="text" 
+						<input className="w-64 h-8 bg-t-light-gray" type="text" required={true}
 									 {...register("SKU")}/>
 					</div>
 					<div className="flex font-satoshi items-center mt-8 justify-between">
 						<div className="flex items-center">
 							<div className="w-16">Name</div>
-							<input className="w-64 h-8 bg-t-light-gray" type="text" 
+							<input className="w-64 h-8 bg-t-light-gray" type="text" required={true}
 										 {...register("Name")}/>
 						</div>
 						<div className="flex items-center">
 							<div className="w-16 ml-24">QTY</div>
-							<input className="w-64 h-8 bg-t-light-gray" type="text" 
+							<input className="w-64 h-8 bg-t-light-gray" type="number" required={true}
 										 {...register("QTY")}/>
 						</div>
 					</div>
 
 					<div className="mt-8">Product Description</div>
 					<div className="text-xs text-t-dark-gray mt-2">A small description about the product</div>
-					<textarea className="w-full h-32 mt-2 bg-t-light-gray" type="text"
+					<textarea className="w-full h-32 mt-2 bg-t-light-gray" type="text" required={true}
 										 {...register("DES")}/>
 
 					<div className="flex mt-8">
@@ -70,7 +70,8 @@ function NewProduct(){
 							<div className="mt-2">JPEG, PNG, SVG or GIF</div>
 							<div>(Maximum file size 50MB)</div>
 						</div>
-						<div className="text-t-blue underline ml-12">Add Images</div>
+						<label className="text-t-blue underline ml-12 cursor-pointer" for="file-upload">Add Image</label>
+						<input type="file" id="file-upload" className="hidden" {...register("img_location")}/>
 					</div>
 
 					<div className="flex w-full justify-end mt-8">
