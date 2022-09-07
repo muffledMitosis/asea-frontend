@@ -70,7 +70,8 @@ function NewProduct(){
 							<div className="mt-2">JPEG, PNG, SVG or GIF</div>
 							<div>(Maximum file size 50MB)</div>
 						</div>
-						<div className="text-t-blue underline ml-12">Add Images</div>
+						<label className="text-t-blue underline ml-12 cursor-pointer" for="file-upload">Add Image</label>
+						<input type="file" id="file-upload" className="hidden" {...register("img_location")}/>
 					</div>
 
 					<div className="flex w-full justify-end mt-8">
